@@ -503,7 +503,7 @@ class _TaskFormScreenState extends State<TaskFormScreen> {
       await context.read<TaskProvider>().deleteTask(widget.task!.id);
       if (!mounted) return;
       AppTheme.showSnackBar(context, 'Task deleted', isError: true);
-      Navigator.pop(context);
+      Navigator.popUntil(context, (route) => route.isFirst);
     }
   }
 }

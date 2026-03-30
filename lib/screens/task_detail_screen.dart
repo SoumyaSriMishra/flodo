@@ -6,20 +6,25 @@ import '../models/task.dart';
 import '../providers/task_provider.dart';
 import 'task_form_screen.dart';
 
-class TaskDetailScreen extends StatelessWidget {
+class TaskDetailScreen extends StatefulWidget {
   final Task task;
 
   const TaskDetailScreen({super.key, required this.task});
 
   @override
+  State<TaskDetailScreen> createState() => _TaskDetailScreenState();
+}
+
+class _TaskDetailScreenState extends State<TaskDetailScreen> {
+  @override
   Widget build(BuildContext context) {
+    final task = context.watch<TaskProvider>().getTaskById(widget.task.id) ?? widget.task;
     final provider = context.read<TaskProvider>();
     final isBlocked = provider.isBlocked(task);
-    final blockerTitle = isBlocked
-        ? provider.getTaskById(task.blockedById!)?.title
-        : null;
-    final isOverdue = task.dueDate.isBefore(DateTime.now()) &&
-        task.status != 'Done';
+    final blockerTitle =
+        isBlocked ? provider.getTaskById(task.blockedById!)?.title : null;
+    final isOverdue =
+        task.dueDate.isBefore(DateTime.now()) && task.status != 'Done';
 
     return Scaffold(
       backgroundColor: const Color(0xFF0D0D0F),
@@ -61,7 +66,6 @@ class TaskDetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             // ── Status badge ──────────────────────────────────
             _StatusBadge(status: task.status),
             const SizedBox(height: 20),
@@ -123,13 +127,13 @@ class TaskDetailScreen extends StatelessWidget {
                 if (isOverdue) ...[
                   const SizedBox(width: 10),
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 8, vertical: 3),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                     decoration: BoxDecoration(
                       color: const Color(0xFF2A1018),
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(
-                          color: const Color(0xFFE05C6A), width: 1),
+                      border:
+                          Border.all(color: const Color(0xFFE05C6A), width: 1),
                     ),
                     child: Text(
                       'Overdue',
@@ -162,9 +166,7 @@ class TaskDetailScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     Icon(
-                      isBlocked
-                          ? Icons.lock_rounded
-                          : Icons.lock_open_rounded,
+                      isBlocked ? Icons.lock_rounded : Icons.lock_open_rounded,
                       size: 16,
                       color: isBlocked
                           ? const Color(0xFFE05C6A)
@@ -196,13 +198,12 @@ class TaskDetailScreen extends StatelessWidget {
               const _SectionLabel(label: 'Recurrence'),
               const SizedBox(height: 8),
               Container(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 14, vertical: 12),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
                 decoration: BoxDecoration(
                   color: const Color(0xFF0D2A3A),
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(
-                      color: const Color(0xFF1A5070), width: 1),
+                  border: Border.all(color: const Color(0xFF1A5070), width: 1),
                 ),
                 child: Row(
                   children: [
@@ -235,7 +236,7 @@ class TaskDetailScreen extends StatelessWidget {
     await Navigator.push(
       context,
       PageRouteBuilder(
-        pageBuilder: (_, __, ___) => TaskFormScreen(task: task),
+        pageBuilder: (_, __, ___) => TaskFormScreen(task: widget.task),
         transitionsBuilder: (_, animation, __, child) => SlideTransition(
           position: Tween<Offset>(
             begin: const Offset(0, 1),
@@ -280,25 +281,34 @@ class _StatusBadge extends StatelessWidget {
 
   Color get _bgColor {
     switch (status) {
-      case 'Done': return const Color(0xFF102A20);
-      case 'In Progress': return const Color(0xFF2A2010);
-      default: return const Color(0xFF252530);
+      case 'Done':
+        return const Color(0xFF102A20);
+      case 'In Progress':
+        return const Color(0xFF2A2010);
+      default:
+        return const Color(0xFF252530);
     }
   }
 
   Color get _textColor {
     switch (status) {
-      case 'Done': return const Color(0xFF3BCFA8);
-      case 'In Progress': return const Color(0xFFE8A83B);
-      default: return const Color(0xFF7A7A8C);
+      case 'Done':
+        return const Color(0xFF3BCFA8);
+      case 'In Progress':
+        return const Color(0xFFE8A83B);
+      default:
+        return const Color(0xFF7A7A8C);
     }
   }
 
   IconData get _icon {
     switch (status) {
-      case 'Done': return Icons.check_circle_rounded;
-      case 'In Progress': return Icons.timelapse_rounded;
-      default: return Icons.radio_button_unchecked_rounded;
+      case 'Done':
+        return Icons.check_circle_rounded;
+      case 'In Progress':
+        return Icons.timelapse_rounded;
+      default:
+        return Icons.radio_button_unchecked_rounded;
     }
   }
 

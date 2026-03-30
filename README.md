@@ -12,7 +12,17 @@ A clean, modern task management application built with Flutter. Focus strictly o
 - **Dark Mode First:** Premium dark aesthetic with blue accent colors.
 - **Local Persistence:** Your data stays on your device using Hive.
 
-## 🛠️ Built With
+## � Screenshots
+
+| Home Screen | Task Details |
+|-------------|--------------|
+| ![Home Screen](screenshots/home_screen.png) | ![Task Details](screenshots/task_details.png) |
+
+| Add/Edit Task | Search & Filter |
+|----------------|-----------------|
+| ![Add Task](screenshots/add_task.png) | ![Search Filter](screenshots/search_filter.png) |
+
+## �🛠️ Built With
 
 - **Flutter:** Core framework for cross-platform expansion.
 - **Provider:** Robust state management for real-time UI updates.
@@ -37,7 +47,9 @@ A clean, modern task management application built with Flutter. Focus strictly o
    ```bash
    flutter run
    ```
+5 ** screen shots **
 
 ## 📄 License
 
 This project is open source and available under the MIT License.
+
