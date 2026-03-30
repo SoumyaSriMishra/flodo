@@ -12,17 +12,7 @@ A clean, modern task management application built with Flutter. Focus strictly o
 - **Dark Mode First:** Premium dark aesthetic with blue accent colors.
 - **Local Persistence:** Your data stays on your device using Hive.
 
-## � Screenshots
-
-| Home Screen | Task Details |
-|-------------|--------------|
-| ![Home Screen](screenshots/home_screen.png) | ![Task Details](screenshots/task_details.png) |
-
-| Add/Edit Task | Search & Filter |
-|----------------|-----------------|
-| ![Add Task](screenshots/add_task.png) | ![Search Filter](screenshots/search_filter.png) |
-
-## �🛠️ Built With
+## �️ Built With
 
 - **Flutter:** Core framework for cross-platform expansion.
 - **Provider:** Robust state management for real-time UI updates.
@@ -33,7 +23,7 @@ A clean, modern task management application built with Flutter. Focus strictly o
 
 1. **Clone the repository:**
    ```bash
-   git clone [repository-url]
+   git clone [https://github.com/SoumyaSriMishra/flodo]
    ```
 2. **Setup dependencies:**
    ```bash
