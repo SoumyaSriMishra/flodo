@@ -37,7 +37,8 @@ A clean, modern task management application built with Flutter. Focus strictly o
    ```bash
    flutter run
    ```
-5 ** screen shots **
+5. **You can find the project demo video here:
+ **In-repo:** (Flodo\task_manager\screenshots_demo)
 
 ## 📄 License
 
